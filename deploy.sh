@@ -6,8 +6,8 @@ export APP_VERSION=`git rev-parse --short HEAD`
 if [[ ${CI_BRANCH} == "master" ]]
 then
     deploy_env="prod"
-    echo "Automated builds are not supported for production, it's too scary!!!"
-    exit 0
+#    echo "Automated builds are not supported for production, it's too scary!!!"
+#    exit 0
 else
     deploy_env=${CI_BRANCH}
 fi
