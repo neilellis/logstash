@@ -28,11 +28,12 @@ pip install awscli
 aws elasticbeanstalk delete-application-version --application-name "snapito-logstash" --version-label "${APP_VERSION}"  --delete-source-bundle
 
 
+ zip app.zip *
 # upload to S3
-aws s3 cp snapito-customer/target/snapito-logstash-1.0-SNAPSHOT.war s3://${S3_BUCKET}/snapito-logstash-${APP_VERSION}.war
+aws s3 cp app.zip s3://${S3_BUCKET}/logstash-${APP_VERSION}.zip
 
 # create a new version and update the environment to use this version
-aws elasticbeanstalk create-application-version --application-name "snapito-logstash" --version-label "${APP_VERSION}" --source-bundle S3Bucket="${S3_BUCKET}",S3Key="snapito-api-${APP_VERSION}.war"
+aws elasticbeanstalk create-application-version --application-name "snapito-logstash" --version-label "${APP_VERSION}" --source-bundle S3Bucket="${S3_BUCKET}",S3Key="logstash-${APP_VERSION}.zip"
 
 #aws elasticbeanstalk update-environment --environment-name "snapito-api-${deploy_env}" --version-label "${APP_VERSION}"  --options-settings $(< "aws/${deploy_env}.options.json")
 #aws elasticbeanstalk update-environment --environment-name "snapito-gateway-${deploy_env}" --version-label "${APP_VERSION}" --options-settings $(< "aws/${deploy_env}.options.json")
