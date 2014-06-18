@@ -16,7 +16,7 @@ ADD logstash.conf /root/logstash.conf
 RUN pip install elasticsearch-curator
 
 #elasticsearch
-EXPOSE 9292 514 4712 7007 2120 12201 9200
+EXPOSE 9200 514 4712 7007 2120 12201 9292
 
 ADD start.sh /root/start.sh
 RUN chmod 755 start.sh
