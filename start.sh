@@ -5,5 +5,5 @@ export HOME=/var/easydeploy/share
 while :
 do
     curator curator delete --disk-space 5
-    sleep 120
+    sleep 1200
 done
