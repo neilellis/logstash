@@ -1,4 +1,5 @@
 FROM dockerfile/java
+MAINTAINER neil@cazcade.com
 ENV HOME /root
 WORKDIR /root
 
