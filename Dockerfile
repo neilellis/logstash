@@ -17,4 +17,4 @@ EXPOSE 9200 9292 514 4712 7007 2120 12201
 
 ADD start.sh /root/start.sh
 RUN chmod 755 start.sh
-CMD /root/start.sh
+CMD /root/start.sh 1
