@@ -1,0 +1,50 @@
+machine:
+  ruby:
+    version: rbx-2.2.6
+  services:
+#    - docker
+
+
+dependencies:
+  cache_directories:
+    - /home/ubuntu/apps
+    - /home/ubuntu/bin
+    - /home/ubuntu/.rbenv
+    - /home/ubuntu/.gem
+    - /home/ubuntu/.npm
+    - /home/ubuntu/easydeploy
+#    - /home/ubuntu/snapito-build-tools
+  pre:
+  override:
+    - cd ~ && git clone git@github.com:cazcade/snapito-build-tools.git
+    - ~/snapito-build-tools/bin/core-dependencies.sh
+    - ~/snapito-build-tools/bin/prepare.sh
+#    - docker build -t cazcade/snapito-portal:${CIRCLE_BRANCH} .
+#    - docker push cazcade/snapito-portal:${CIRCLE_BRANCH}
+
+test:
+  pre:
+  override:
+    - echo "No tests"
+
+deployment:
+    staging:
+        branch: staging
+        commands:
+          - git reset HEAD --hard
+          - git clean -fd
+          - git pull origin master
+          - git checkout master
+          - git merge staging
+          - git push
+
+    production:
+        branch: master
+        commands:
+            - "~/snapito-build-tools/bin/easydeploy.sh master logstash update yes" :
+                timeout: 600
+    development:
+        branch: development
+        commands:
+            - ~/snapito-build-tools/bin/easydeploy.sh ${CIRCLE_BRANCH} logstash rebuild-app no :
+                timeout: 600
