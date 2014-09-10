@@ -40,7 +40,7 @@ deployment:
     production:
         branch: master
         commands:
-            - "~/snapito-build-tools/bin/easydeploy.sh master logstash upgrade no '' 'html'" :
+            - "~/snapito-build-tools/bin/easydeploy.sh master logstash update no '' 'html'" :
                 timeout: 600
     development:
         branch: development
