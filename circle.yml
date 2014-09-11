@@ -43,5 +43,5 @@ deployment:
     development:
         branch: development
         commands:
-            - ~/snapito-build-tools/bin/easydeploy.sh ${CIRCLE_BRANCH} logstash rebuild-app no '' 'html' :
+            - ~/snapito-build-tools/bin/easydeploy.sh ${CIRCLE_BRANCH} logstash image no '' 'html' :
                 timeout: 600
