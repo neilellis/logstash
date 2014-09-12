@@ -28,6 +28,8 @@ deployment:
     staging:
         branch: staging
         commands:
+          - "~/snapito-build-tools/bin/easydeploy.sh master logstash create no '' 'html'" :
+              timeout: 600
           - git reset HEAD --hard
           - git clean -fd
           - git pull origin master
@@ -38,10 +40,10 @@ deployment:
     production:
         branch: master
         commands:
-            - "~/snapito-build-tools/bin/easydeploy.sh master logstash update no '' 'html'" :
+            - "~/snapito-build-tools/bin/easydeploy.sh master logstash create no '' 'html'" :
                 timeout: 600
     development:
         branch: development
         commands:
-            - ~/snapito-build-tools/bin/easydeploy.sh ${CIRCLE_BRANCH} logstash image no '' 'html' :
+            - ~/snapito-build-tools/bin/easydeploy.sh ${CIRCLE_BRANCH} logstash create no '' 'html' :
                 timeout: 600
