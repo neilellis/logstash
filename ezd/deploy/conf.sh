@@ -9,5 +9,7 @@ export DATACENTER=nyc2
 export PROJECT=snapito
 export REMOTE_IP_RANGE=86.27.82.71/32
 export DO_IMAGE_SIZE=62
+export MIN_INSTANCES=1
+export MAX_INSTANCES=1
 
 
