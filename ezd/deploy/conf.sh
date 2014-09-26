@@ -1,7 +1,7 @@
 export COMPONENT=logstash
 
 #Common
-export DO_BASE_IMAGE=5505824
+export DO_BASE_IMAGE_NAME=template-nyc2-prod-snapito-base
 export DO_KEYS=93676,237314
 export PROVIDER=do
 export USERNAME=root
